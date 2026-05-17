@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mayognaise/aframe-gif-shader@master/dist/aframe-gif-shader.min.js"></script>
-  </head>
-  <body style="margin: 0; overflow: hidden;">
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Camera - Cường Droid</title>
     
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+    </style>
+</head>
+<body>
+
     <a-scene mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.001;" 
              color-space="sRGB" 
              renderer="colorManagement: true, physicallyCorrectLights" 
              vr-mode-ui="enabled: false" 
              device-orientation-permission-ui="enabled: false">
       
-      <a-assets>
-        <img id="hdv-gif" src="./huongdanviendulich.GIF" crossOrigin="anonymous" />
-      </a-assets>
-
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-entity geometry="primitive: plane; width: 1; height: 1" 
-                  material="shader: gif; src: #hdv-gif; alphaTest: 0.5; transparent: true; loop: true; autoplay: true;" 
-                  rotation="0 0 0" 
-                  position="0 0 0">
-        </a-entity>
+        <a-image id="ar-animation" src="./Girlpho/frame_0_delay-0.08s.gif" position="0 0 0" height="1" width="1"></a-image>
       </a-entity>
       
     </a-scene>
-  </body>
+
+    <script>
+        let currentFrame = 0;
+        const totalFrames = 8; // Lặp từ frame_0 đến frame_7
+        const arImageEl = document.querySelector('#ar-animation');
+
+        // Vòng lặp lật ảnh liên tục (80ms đổi 1 hình cho khớp chuyển động)
+        setInterval(() => {
+            currentFrame = (currentFrame + 1) % totalFrames;
+            arImageEl.setAttribute('src', `./Girlpho/frame_${currentFrame}_delay-0.08s.gif`);
+        }, 80); 
+    </script>
+
+</body>
 </html>
