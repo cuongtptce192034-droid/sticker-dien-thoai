@@ -3,90 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cường Droid - Thông Tin Cá Nhân</title>
+    <title>Cường Droid - Trải nghiệm AR & Kết nối</title>
+    
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    
     <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            background: #121212; 
-            font-family: sans-serif;
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        
+        /* GIAO DIỆN THÔNG TIN CÁ NHÂN MÀU TÍM NẰM ĐÈ LÊN TRÊN CAMERA AR */
+        .overlay-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999; /* Giúp khung thông tin luôn nằm trên cùng của camera */
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Đẩy khung thông tin xuống sát đáy màn hình */
+            pointer-events: none; /* Không che mất camera */
         }
         
         .profile-card {
-            background: rgba(118, 75, 162, 0.2); 
+            background: rgba(118, 75, 162, 0.35); /* Màu tím mờ ảo sang xịn mịn */
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 24px;
-            width: 90%;
-            max-width: 360px;
+            padding: 20px;
+            border-radius: 24px 24px 0 0;
+            width: 100%;
+            max-width: 400px;
             text-align: center;
             color: white;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            pointer-events: auto; /* Cho phép người dùng bấm được nút */
         }
 
         .avatar {
-            width: 90px;
-            height: 90px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 3px solid #00ffcc;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
-        h1 { margin: 0 0 8px 0; font-size: 22px; color: #00ffcc; font-weight: bold; }
-        p { margin: 0 0 25px 0; font-size: 14px; opacity: 0.8; line-height: 1.4; }
+        h1 { margin: 0 0 5px 0; font-size: 20px; color: #00ffcc; font-weight: bold; }
+        p { margin: 0 0 15px 0; font-size: 13px; opacity: 0.9; }
 
         .btn-social {
-            display: block;
-            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             text-decoration: none;
-            padding: 12px;
+            padding: 10px 20px;
             border-radius: 50px;
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 13px;
+            margin: 0 5px;
             font-weight: bold;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .btn-social:hover { 
-            background: #764ba2; 
-            border-color: #764ba2;
-            transform: translateY(-2px);
-        }
-
-        .btn-ar {
-            background: linear-gradient(45deg, #00ffcc, #0099ff);
-            color: #121212;
-            border: none;
-        }
-        .btn-ar:hover {
-            background: linear-gradient(45deg, #0099ff, #00ffcc);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
-        }
+        .btn-social:hover { background: rgba(255, 255, 255, 0.4); }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <img class="avatar" src="./Girlpho/frame_0_delay-0.08s.gif" alt="Avatar">
-        <h1>Cường Droid</h1>
-        <p>Xin chào! Tôi là Cường. Kết nối với tôi qua các kênh bên dưới hoặc trải nghiệm Camera AR nhé!</p>
-        
-        <a href="THAY_LINK_FACEBOOK_CỦA_CƯỜNG_VÀO_ĐÂY" target="_blank" class="btn-social">🔵 Kết nối Facebook</a>
-        
-        <a href="https://zalo.me/0857914449" target="_blank" class="btn-social">🟢 Chat qua Zalo</a>
-        
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-
-        <a href="./quet-ar.html" class="btn-social btn-ar">📸 TRẢI NGHIỆM CAMERA AR</a>
+    <div class="overlay-content">
+        <div class="profile-card">
+            <img class="avatar" src="./Girlpho/frame_0_delay-0.08s.gif" alt="Avatar">
+            <h1>Cường Droid</h1>
+            <p>Chào mừng bạn! Hãy hướng camera vào sticker để quét AR nhé.</p>
+            
+            <a href="THAY_LINK_FACEBOOK_CỦA_CƯỜNG_VÀO_ĐÂY" target="_blank" class="btn-social">🔵 Facebook</a>
+            
+            <a href="https://zalo.me/0857914449" target="_blank" class="btn-social">🟢 Zalo</a>
+        </div>
     </div>
+
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.001;" 
+             color-space="sRGB" 
+             renderer="colorManagement: true, physicallyCorrectLights" 
+             vr-mode-ui="enabled: false" 
+             device-orientation-permission-ui="enabled: false">
+      
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-image id="ar-animation" src="./Girlpho/frame_0_delay-0.08s.gif" position="0 0 0" height="1" width="1"></a-image>
+      </a-entity>
+      
+    </a-scene>
+
+    <script>
+        let currentFrame = 0;
+        const totalFrames = 8; // Tổng số 8 ảnh lẻ của Cường
+        const arImageEl = document.querySelector('#ar-animation');
+
+        // Chạy vòng lặp lật ảnh liên tục (80ms lật 1 hình cho mượt)
+        setInterval(() => {
+            currentFrame = (currentFrame + 1) % totalFrames;
+            arImageEl.setAttribute('src', `./Girlpho/frame_${currentFrame}_delay-0.08s.gif`);
+        }, 80); 
+    </script>
 
 </body>
 </html>
