@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Camera - Cường Droid</title>
-    
+    <title>AR Camera Engine</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
     <style>
@@ -29,10 +28,8 @@
 
     <script>
         let currentFrame = 0;
-        const totalFrames = 8; // Lặp từ frame_0 đến frame_7
+        const totalFrames = 8; 
         const arImageEl = document.querySelector('#ar-animation');
-
-        // Vòng lặp lật ảnh liên tục (80ms đổi 1 hình cho khớp chuyển động)
         setInterval(() => {
             currentFrame = (currentFrame + 1) % totalFrames;
             arImageEl.setAttribute('src', `./Girlpho/frame_${currentFrame}_delay-0.08s.gif`);
