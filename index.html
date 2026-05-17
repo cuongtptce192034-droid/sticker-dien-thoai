@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Hướng Dẫn Viên</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .btn-ar {
+            background-color: #00ffcc;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+            font-size: 18px;
+        }
+        .btn-ar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.6);
+        }
+        .btn-social {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .btn-social:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <img class="avatar" src="huongdanviendulich.GIF" alt="Avatar">
+        
+        <h1>Cường Droid</h1>
+        <p>Chào mừng bạn! Tôi là hướng dẫn viên du lịch AR của bạn.</p>
+        
+        <a href="quet-ar.html" class="btn btn-ar">✨ BẮT ĐẦU QUÉT AR ✨</a>
+        
+        <a href="#" target="_blank" class="btn btn-social">🔵 Kết nối Facebook</a>
+        <a href="#" target="_blank" class="btn btn-social">🟢 Chat qua Zalo</a>
+    </div>
+
+</body>
+</html>
