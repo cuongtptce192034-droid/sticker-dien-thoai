@@ -3,92 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cường Droid - Trải nghiệm AR & Liên hệ</title>
+    <title>Cường Droid - Lựa Chọn Trải Nghiệm</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
-        
-        /* NHÚNG CAMERA AR CHẠY TOÀN MÀN HÌNH LÀM NỀN */
-        .ar-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            z-index: 1;
-        }
-
-        /* ĐÈ KHUNG LIÊN HỆ LÊN TRÊN CAMERA AR */
-        .overlay-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            pointer-events: none; /* Để không che mất cảm ứng quét của camera */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: #121212; 
+            font-family: sans-serif;
         }
         
         .profile-card {
-            background: rgba(118, 75, 162, 0.35); 
+            background: rgba(118, 75, 162, 0.2); 
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 25px;
-            border-radius: 24px 24px 0 0;
-            width: 100%;
-            max-width: 400px;
+            padding: 30px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 360px;
             text-align: center;
             color: white;
-            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            pointer-events: auto; /* Kích hoạt lại để click được nút bấm */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .avatar {
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: 3px solid #00ffcc;
             object-fit: cover;
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
 
-        h1 { margin: 0 0 5px 0; font-size: 20px; color: #00ffcc; font-weight: bold; }
-        p { margin: 0 0 15px 0; font-size: 13px; opacity: 0.9; }
+        h1 { margin: 0 0 8px 0; font-size: 22px; color: #00ffcc; font-weight: bold; }
+        p { margin: 0 0 25px 0; font-size: 14px; opacity: 0.8; line-height: 1.4; }
 
-        .btn-social {
-            display: block;
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-option {
+            flex: 1;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 50px;
-            font-size: 14px;
+            padding: 12px 8px;
+            border-radius: 12px;
+            font-size: 13px;
             font-weight: bold;
             transition: all 0.3s;
-            background: linear-gradient(45deg, #00ffcc, #0099ff);
-            color: #121212;
-            border: none;
+            text-align: center;
         }
-        .btn-social:hover { 
-            background: linear-gradient(45deg, #0099ff, #00ffcc);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
-            transform: translateY(-2px);
+
+        /* Nút Option 1: Chuyển sang quét AR */
+        .btn-ar {
+            background: transparent;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+        }
+        .btn-ar:hover {
+            background: #00ffcc;
+            color: #121212;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+        }
+
+        /* Nút Option 2: Sang trang SZA */
+        .btn-sza {
+            background: #0099ff;
+            color: white;
+            border: 2px solid #0099ff;
+        }
+        .btn-sza:hover {
+            background: #0077cc;
+            border-color: #0077cc;
+            box-shadow: 0 0 15px rgba(0, 153, 255, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <iframe src="./quet-ar.html" class="ar-background" allow="camera"></iframe>
-
-    <div class="overlay-content">
-        <div class="profile-card">
-            <img class="avatar" src="./Girlpho/frame_0_delay-0.08s.gif" alt="Avatar">
-            <h1>Cường Droid</h1>
-            <p>Hãy hướng camera vào sticker để quét AR và kết nối cùng tôi nhé!</p>
+    <div class="profile-card">
+        <img class="avatar" src="./Girlpho/frame_0_delay-0.08s.gif" alt="Avatar">
+        <h1>Cường Droid</h1>
+        <p>Vui lòng chọn một tùy chọn bên dưới để tiếp tục trải nghiệm.</p>
+        
+        <div class="btn-container">
+            <a href="./quet-ar.html" class="btn-option btn-ar">📸 QUÉT AR<br>(SCAN)</a>
             
-            <a href="https://www.szactrl.com/" target="_blank" class="btn-social">🌐 Ghé thăm SZACTRL.com</a>
+            <a href="https://www.szactrl.com/" target="_blank" class="btn-option btn-sza">🌐 TRANG SZA<br>(SZA SITE)</a>
         </div>
     </div>
 
